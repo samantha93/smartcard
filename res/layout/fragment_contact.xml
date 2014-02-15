@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvMages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/tvMages" />
+
+    <TextView
+        android:id="@+id/tvBenzohra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvMages"
+        android:layout_marginLeft="20dp"
+        android:text="@string/tvBenzohra" />
+
+    <TextView
+        android:id="@+id/tvTran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBenzohra"
+        android:layout_marginLeft="20dp"
+        android:text="@string/tvTran" />
+
+    <TextView
+        android:id="@+id/tvLecollonnier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTran"
+        android:layout_marginLeft="20dp"
+        android:text="@string/tvLecollonnier" />
+
+    <TextView
+        android:id="@+id/tvAlwis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLecollonnier"
+        android:layout_marginLeft="20dp"
+        android:text="@string/tvAlwis" />
+
+</RelativeLayout>

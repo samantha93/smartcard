@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+ 
+<item android:id="@+id/option" 
+      android:title="@string/app_name">
+<!--       android:icon="@drawable/option"> -->
+</item>
+ 
+<item android:id="@+id/quitter" 
+     android:title="@string/app_name"></item>
+<!--      android:icon="@drawable/quit" /> -->
+</menu>
