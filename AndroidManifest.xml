@@ -32,6 +32,8 @@
         </activity>
         <activity android:name="efrei.asyria.m1a.smartcard.HomeActivity" >
         </activity>
+        <activity android:name="efrei.asyria.m1a.smartcard.BeamActivity" >
+        </activity>
     </application>
 
 </manifest>
