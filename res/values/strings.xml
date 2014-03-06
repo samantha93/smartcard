@@ -3,13 +3,11 @@
 
     <string name="app_name">SmartCard</string>
     <string name="action_settings">Settings</string>
-    
     <string name="connectionButton">Connexion</string>
     <string name="forgetpwd">Oublie</string>
     <string name="etLogin">Entrer votre login</string>
     <string name="etPwd">Entrer votre mot de passe</string>
     <string name="validButton">Valider</string>
-    
     <string name="inscriptionButton">Inscription</string>
     <string name="etSurname">Entrer votre nom</string>
     <string name="etName">Entrer votre prenom</string>
@@ -17,7 +15,6 @@
     <string name="etPhone">Entrer votre numero</string>
     <string name="etPwd1">Entrer votre mot de passe</string>
     <string name="etPwd2">Verification mot de passe</string>
-    
     <string name="imgMages">David Mages</string>
     <string name="tvMages">David Mages</string>
     <string name="imgTran">Michel Tran</string>
@@ -28,24 +25,25 @@
     <string name="tvBenzohra">Sami Benzohra</string>
     <string name="imgAlwis">Samantha Alwis</string>
     <string name="tvAlwis">Samantha Alwis</string>
-    
     <string name="tvContact">Nous Contacter</string>
     <string name="tvAbout">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</string>
-    
+
+    <string name="tvBeam">Message Beam</string>
     
     <!-- Menu -->
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
-    
+
     <string-array name="nav_drawer_items">
-        <item >Mes cartes</item>
-        <item >Ma carte</item>
-        <item >Mon compte</item>
-        <item >Contact</item>
-        <item >A propos de</item>
-        <item >Déconnexion</item>
+        <item>Mes cartes</item>
+        <item>Ma carte</item>
+        <item>Mon compte</item>
+        <item>Contact</item>
+        <item>A propos de</item>
+        <item>Page NFC</item>
+        <item>Déconnexion</item>
     </string-array>
-    
+
     <array name="nav_drawer_icons">
         <item>@drawable/ic_drawer</item>
         <item>@drawable/ic_drawer</item>
@@ -54,6 +52,7 @@
         <item>@drawable/ic_drawer</item>
         <item>@drawable/ic_drawer</item>
     </array>
-     <!-- Content Description -->
+    <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+
 </resources>

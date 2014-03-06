@@ -56,7 +56,7 @@ public class HomeActivity extends Activity {
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
  
         navDrawerItems = new ArrayList<NavDrawerItem>();
- System.out.println(navMenuIcons);
+        System.out.println(navMenuIcons);
         // adding nav drawer items to array
         // Home
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
@@ -70,7 +70,8 @@ public class HomeActivity extends Activity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         // What's hot, We  will add a counter here
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-         
+        
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
  
         // Recycle the typed array
         navMenuIcons.recycle();
@@ -164,28 +165,31 @@ public class HomeActivity extends Activity {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
-        case 0:
-            fragment = new CardListFragment();
-            break;
-        case 1:
-            fragment = new MyCardFragment();
-            break;
-        case 2:
-            fragment = new MyAccountFragment();
-            break;
-        case 3:
-            fragment = new ContactFragment();
-            break;
-        case 4:
-            fragment = new AboutFragment();
-            break;
-        case 5:
-            Intent i = new Intent(HomeActivity.this, StartActivity.class);
-            startActivity(i);
-            break;
- 
-        default:
-            break;
+	        case 0:
+	            fragment = new CardListFragment();
+	            break;
+	        case 1:
+	            fragment = new MyCardFragment();
+	            break;
+	        case 2:
+	            fragment = new MyAccountFragment();
+	            break;
+	        case 3:
+	            fragment = new ContactFragment();
+	            break;
+	        case 4:
+	            fragment = new AboutFragment();
+	            break;
+	        case 5:
+	        	Intent i = new Intent(HomeActivity.this, BeamActivity.class);
+	        	startActivity(i);
+	        	break;
+	        case 6:
+	            i = new Intent(HomeActivity.this, StartActivity.class);
+	            startActivity(i);
+	            break;
+	        default:
+	            break;
         }
  
         if (fragment != null) {
@@ -214,7 +218,6 @@ public class HomeActivity extends Activity {
      * When using the ActionBarDrawerToggle, you must call it during
      * onPostCreate() and onConfigurationChanged()...
      */
- 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);

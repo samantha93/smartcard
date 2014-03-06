@@ -4,9 +4,11 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="18" />
+    
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
         android:allowBackup="true"

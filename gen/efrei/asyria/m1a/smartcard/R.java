@@ -43,53 +43,55 @@ public final class R {
         public static final int list_selector=0x7f020008;
     }
     public static final class id {
-        public static final int Button01=0x7f0a0002;
-        public static final int ButtonConnection=0x7f0a0012;
-        public static final int ButtonInscription=0x7f0a0011;
-        public static final int TextView01=0x7f0a001c;
-        public static final int TextView02=0x7f0a001d;
-        public static final int TextView03=0x7f0a001e;
-        public static final int TextView04=0x7f0a001f;
-        public static final int TextView05=0x7f0a0020;
-        public static final int action_settings=0x7f0a0021;
-        public static final int buttonValidConnexion=0x7f0a0003;
-        public static final int buttonValidInscription=0x7f0a000b;
-        public static final int drawer_layout=0x7f0a000c;
-        public static final int editText1=0x7f0a0000;
-        public static final int editText2=0x7f0a0001;
-        public static final int etLogin=0x7f0a0004;
-        public static final int etMail=0x7f0a0007;
-        public static final int etName=0x7f0a0006;
-        public static final int etPhone=0x7f0a0008;
-        public static final int etPwd1=0x7f0a0009;
-        public static final int etPwd2=0x7f0a000a;
-        public static final int etSurname=0x7f0a0005;
-        public static final int frame_container=0x7f0a000d;
-        public static final int icon=0x7f0a0013;
-        public static final int list_slidermenu=0x7f0a000e;
-        public static final int option=0x7f0a000f;
-        public static final int quitter=0x7f0a0010;
-        public static final int textView2=0x7f0a001b;
-        public static final int title=0x7f0a0014;
-        public static final int tvAbout=0x7f0a0015;
-        public static final int tvAlwis=0x7f0a001a;
-        public static final int tvBenzohra=0x7f0a0017;
-        public static final int tvLecollonnier=0x7f0a0019;
-        public static final int tvMages=0x7f0a0016;
-        public static final int tvTran=0x7f0a0018;
+        public static final int Button01=0x7f0a0003;
+        public static final int ButtonConnection=0x7f0a0013;
+        public static final int ButtonInscription=0x7f0a0012;
+        public static final int TextView01=0x7f0a001d;
+        public static final int TextView02=0x7f0a001e;
+        public static final int TextView03=0x7f0a001f;
+        public static final int TextView04=0x7f0a0020;
+        public static final int TextView05=0x7f0a0021;
+        public static final int action_settings=0x7f0a0022;
+        public static final int buttonValidConnexion=0x7f0a0004;
+        public static final int buttonValidInscription=0x7f0a000c;
+        public static final int drawer_layout=0x7f0a000d;
+        public static final int editText1=0x7f0a0001;
+        public static final int editText2=0x7f0a0002;
+        public static final int etLogin=0x7f0a0005;
+        public static final int etMail=0x7f0a0008;
+        public static final int etName=0x7f0a0007;
+        public static final int etPhone=0x7f0a0009;
+        public static final int etPwd1=0x7f0a000a;
+        public static final int etPwd2=0x7f0a000b;
+        public static final int etSurname=0x7f0a0006;
+        public static final int frame_container=0x7f0a000e;
+        public static final int icon=0x7f0a0014;
+        public static final int list_slidermenu=0x7f0a000f;
+        public static final int option=0x7f0a0010;
+        public static final int quitter=0x7f0a0011;
+        public static final int textView2=0x7f0a001c;
+        public static final int title=0x7f0a0015;
+        public static final int tvAbout=0x7f0a0016;
+        public static final int tvAlwis=0x7f0a001b;
+        public static final int tvBeam=0x7f0a0000;
+        public static final int tvBenzohra=0x7f0a0018;
+        public static final int tvLecollonnier=0x7f0a001a;
+        public static final int tvMages=0x7f0a0017;
+        public static final int tvTran=0x7f0a0019;
     }
     public static final class layout {
-        public static final int activity_connection=0x7f030000;
-        public static final int activity_inscription=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_menu=0x7f030003;
-        public static final int activity_start=0x7f030004;
-        public static final int drawer_list_item=0x7f030005;
-        public static final int fragment_about=0x7f030006;
-        public static final int fragment_cardlist=0x7f030007;
-        public static final int fragment_contact=0x7f030008;
-        public static final int fragment_myaccount=0x7f030009;
-        public static final int fragment_mycard=0x7f03000a;
+        public static final int activity_beam=0x7f030000;
+        public static final int activity_connexion=0x7f030001;
+        public static final int activity_inscription=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_menu=0x7f030004;
+        public static final int activity_start=0x7f030005;
+        public static final int drawer_list_item=0x7f030006;
+        public static final int fragment_about=0x7f030007;
+        public static final int fragment_cardlist=0x7f030008;
+        public static final int fragment_contact=0x7f030009;
+        public static final int fragment_myaccount=0x7f03000a;
+        public static final int fragment_mycard=0x7f03000b;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -100,11 +102,11 @@ public final class R {
         public static final int connectionButton=0x7f060002;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f06001c;
-        public static final int drawer_close=0x7f06001b;
+        public static final int desc_list_item_icon=0x7f06001d;
+        public static final int drawer_close=0x7f06001c;
         /**  Menu 
          */
-        public static final int drawer_open=0x7f06001a;
+        public static final int drawer_open=0x7f06001b;
         public static final int etLogin=0x7f060004;
         public static final int etMail=0x7f06000a;
         public static final int etName=0x7f060009;
@@ -122,6 +124,7 @@ public final class R {
         public static final int inscriptionButton=0x7f060007;
         public static final int tvAbout=0x7f060019;
         public static final int tvAlwis=0x7f060017;
+        public static final int tvBeam=0x7f06001a;
         public static final int tvBenzohra=0x7f060015;
         public static final int tvContact=0x7f060018;
         public static final int tvLecollonnier=0x7f060013;

@@ -8,14 +8,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class ConnexionActivity extends Activity{
+public class ConnexionActivity extends Activity {
 
 	private Button validButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_connection);
+		setContentView(R.layout.activity_connexion);
 		
 		validButton = (Button) findViewById(R.id.buttonValidConnexion);
 		validButton.setOnClickListener(new OnClickListener() {
