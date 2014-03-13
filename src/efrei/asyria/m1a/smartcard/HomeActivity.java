@@ -2,9 +2,9 @@ package efrei.asyria.m1a.smartcard;
  
 import java.util.ArrayList;
 
+import efrei.asyria.m1a.adapter.NavDrawerListAdapter;
 import efrei.asyria.m1a.menu.NavDrawerItem;
  
-import adapter.NavDrawerListAdapter;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -202,10 +202,10 @@ public class HomeActivity extends Activity {
             mDrawerList.setSelection(position);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
+        } /*else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
-        }
+        }*/
     }
  
     @Override

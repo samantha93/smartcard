@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <ImageView 
+    <!--<ImageView 
         android:layout_height="200dp"
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
@@ -14,10 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
         android:src="@drawable/cv4"/>
-        <ImageView 
+    
+    <ImageView 
         android:layout_height="200dp"
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/cv5"/>
+        android:src="@drawable/cv5"/>-->
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package adapter;
+package efrei.asyria.m1a.adapter;
 
 import java.util.ArrayList;
 
