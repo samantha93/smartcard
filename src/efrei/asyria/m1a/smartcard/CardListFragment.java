@@ -31,14 +31,15 @@ public class CardListFragment extends Fragment {
 
 		List<Card> mList = new ArrayList<Card>();
 		User u1 = new User(1, "Nom", "Pierre", "8 rue de la paix", 92033, "Nanterre", "0102030508", "0625585897", "coco@gmail.com");
-		
+		User u2 = new User(2, "Le Collonnier", "Vincent", "50 rue de l'etoile", 75003, "Paris", "0206568743", "0698347525", "vincentlecollonnier@gmail.com");
 		mList.add(new Card(1, u1, "cartevisite2"));
-		mList.add(new Card(2, u1, "cartevisite1"));
+		mList.add(new Card(2, u2, "cartevisite1"));
 		mList.add(new Card(3, u1, "cartevisite3"));
 		
 		listViewCards = (ListView) rootView.findViewById(R.id.listCard); 
 		ListCardAdapter adapter = new ListCardAdapter(this.getActivity(), mList);
 		listViewCards.setAdapter(adapter);
+		
 		return rootView;
 	}
 }

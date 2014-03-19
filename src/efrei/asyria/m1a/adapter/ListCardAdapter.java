@@ -6,6 +6,7 @@ import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.smartcard.R;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -33,19 +34,35 @@ public class ListCardAdapter extends BaseAdapter {
 		View v = convertView;
 		CompleteListViewHolder viewHolder;
 		if (convertView == null) {
-			LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater li = (LayoutInflater) mContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = li.inflate(R.layout.list_card_item, null);
 			viewHolder = new CompleteListViewHolder(v);
 			v.setTag(viewHolder);
 		} else {
 			viewHolder = (CompleteListViewHolder) v.getTag();
 		}
-		viewHolder.tvName.setText(mList.get(position).getUser().getName()+" "+mList.get(position).getUser().getSurname());
+		viewHolder.tvName.setText(mList.get(position).getUser().getName() + " "
+				+ mList.get(position).getUser().getSurname());
 		viewHolder.tvAdress.setText(mList.get(position).getUser().getAdress());
-		viewHolder.tvCp.setText(mList.get(position).getUser().getCp()+" "+mList.get(position).getUser().getCity());
+		viewHolder.tvCp.setText(mList.get(position).getUser().getCp() + " "
+				+ mList.get(position).getUser().getCity());
 		viewHolder.tvPhoneF.setText(mList.get(position).getUser().getPhoneF());
 		viewHolder.tvPhoneM.setText(mList.get(position).getUser().getPhoneM());
 		viewHolder.tvEmail.setText(mList.get(position).getUser().getEmail());
+
+		int i=0;
+		String img = mList.get(position).getUrlImg();
+		img = img.substring(img.length() - 1);
+		
+		try {
+			i = Integer.parseInt(img);
+		} catch (NumberFormatException nfe) {
+			System.out.println("Could not parse " + nfe);
+		}
+		
+		
+		viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
 		return v;
 	}
 

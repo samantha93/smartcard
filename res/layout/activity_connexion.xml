@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/etLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,33 +18,41 @@
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:hint="@string/etPwd"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonValidConnexion"
-        android:layout_alignBottom="@+id/buttonValidConnexion"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignLeft="@+id/etLogin"
+        android:layout_alignTop="@+id/buttonValidConnexion"
         android:text="@string/forgetpwd" />
 
     <Button
         android:id="@+id/buttonValidConnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="49dp"
+        android:layout_alignRight="@+id/etPwd"
+        android:layout_centerVertical="true"
         android:text="@string/validButton" />
+
+    <EditText
+        android:id="@+id/etPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etLogin"
+        android:layout_below="@+id/etLogin"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/etPwd"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/buttonValidConnexion"
+        android:text="TextView" />
 
 </RelativeLayout>
