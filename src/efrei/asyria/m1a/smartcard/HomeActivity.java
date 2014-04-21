@@ -1,13 +1,16 @@
 package efrei.asyria.m1a.smartcard;
  
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import efrei.asyria.m1a.adapter.NavDrawerListAdapter;
+import efrei.asyria.m1a.asynchronous.HttpGetRequest;
 import efrei.asyria.m1a.menu.NavDrawerItem;
  
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -185,8 +188,20 @@ public class HomeActivity extends Activity {
 	        	startActivity(i);
 	        	break;
 	        case 6:
-	            i = new Intent(HomeActivity.this, StartActivity.class);
-	            startActivity(i);
+	        	ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+	    		progressDialog.setMessage("Deconnexion...");
+	        	String url = "http://dev.smart-card.fr/logout";
+			try {
+				String result = new HttpGetRequest(progressDialog).execute(url).get();
+				Intent in = new Intent(HomeActivity.this, StartActivity.class);
+				startActivity(in);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	            break;
 	        default:
 	            break;

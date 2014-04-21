@@ -24,7 +24,7 @@ public class StartActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(StartActivity.this, ConnexionActivity.class);
+				Intent i = new Intent(StartActivity.this, ConnectionActivity.class);
 				startActivity(i);
 			}
 		});
