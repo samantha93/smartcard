@@ -99,7 +99,9 @@ public class ConnectionActivity extends Activity {
 							progressDialog.dismiss();
 							tvError.setText(R.string.connectionError);
 						}*/
-						sessionLogin.createLoginSession(id, username, email);
+//						public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String ccountry) {
+						
+						sessionLogin.createLoginSession(id, username, email, obj.getString("name"), obj.getString("surname"), obj.getString("phone1"), obj.getString("phone2"), obj.getString("job"), obj.getString("cName"), obj.getString("cCity"), obj.getString("cAdress"), obj.getString("cCountry"));
 						Intent i = new Intent(ConnectionActivity.this, HomeActivity.class);
 						startActivity(i);
 					} catch (Throwable t) {

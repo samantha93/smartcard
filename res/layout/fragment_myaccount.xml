@@ -1,60 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="30dp"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/tvNameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="coco"
+        android:text="- - -"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:text="- - -"
+        android:layout_below="@+id/tvNameUser"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/TextView02"
+        android:id="@+id/tvPhone1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_below="@+id/TextView01"
-        android:text="06.58.36.47.28"
+        android:text="- - -"
+        android:layout_below="@+id/tvEmail"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/TextView03"
+        android:id="@+id/tvPhone2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView02"
-        android:layout_below="@+id/TextView02"
-        android:text="Thales"
+        android:text="- - -"
+        android:layout_below="@+id/tvPhone1"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/TextView04"
+        android:id="@+id/tvJob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView03"
-        android:layout_below="@+id/TextView03"
-        android:text="Cadre Superieur"
+        android:text="- - -"
+        android:layout_below="@+id/tvPhone2"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/TextView05"
+        android:id="@+id/tvCname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView04"
-        android:layout_below="@+id/TextView04"
-        android:text="40 ans"
+        android:text="- - -"
+        android:layout_below="@+id/tvJob"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/tvCadress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- - -"
+        android:layout_below="@+id/tvCname"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:id="@+id/tvCcity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- - -"
+        android:layout_below="@+id/tvCadress"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+<TextView
+        android:id="@+id/tvCcountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="- - -"
+        android:layout_below="@+id/tvCcity"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-</LinearLayout>
+</RelativeLayout>

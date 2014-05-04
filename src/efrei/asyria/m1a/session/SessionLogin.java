@@ -54,11 +54,21 @@ public class SessionLogin {
 	 "cCity":"Paris",
 	 "cCountry":"France"}
 	 */
-	public void createLoginSession(String id, String u, String email) {
+	public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String cadress, String ccountry) {
 		//editor.putInt(KEY_ID, id);
 		editor.putString(KEY_ID, id);
 		editor.putString(KEY_USERNAME, u);
 		editor.putString(KEY_EMAIL, email);
+		editor.putString(KEY_NAME, name+" "+surname);
+		editor.putString(KEY_PHONE1, phone1);
+		editor.putString(KEY_PHONE2, phone2);
+		editor.putString(KEY_JOB, job);
+		editor.putString(KEY_CNAME, cname);
+		editor.putString(KEY_CADRESS, cadress);
+		editor.putString(KEY_CCITY, ccity);
+		editor.putString(KEY_CCOUNTRY, ccountry);
+
+		//editor.putString(KEY_EMAIL, email);
 		
 		editor.commit();
 	}
@@ -68,8 +78,15 @@ public class SessionLogin {
 
 		user.put(KEY_ID, pref.getString(KEY_ID, null));
 		user.put(KEY_USERNAME, pref.getString(KEY_USERNAME, null));
-
 		user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+		user.put(KEY_NAME, pref.getString(KEY_NAME, null));
+		user.put(KEY_PHONE1, pref.getString(KEY_PHONE1, null));
+		user.put(KEY_PHONE2, pref.getString(KEY_PHONE2, null));
+		user.put(KEY_JOB, pref.getString(KEY_JOB, null));
+		user.put(KEY_CNAME, pref.getString(KEY_CNAME, null));
+		user.put(KEY_CCITY, pref.getString(KEY_CCITY, null));
+		user.put(KEY_CADRESS, pref.getString(KEY_CADRESS, null));
+		user.put(KEY_CCOUNTRY, pref.getString(KEY_CCOUNTRY, null));
 		
 		return user;
 	}
