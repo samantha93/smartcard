@@ -1,5 +1,6 @@
 package efrei.asyria.m1a.smartcard;
 
+import efrei.asyria.m1a.session.SessionLogin;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class StartActivity extends Activity {
 
+	private SessionLogin sessionLogin;
 	private Button buttonInscription;
 	private Button buttonConnection;
 	
@@ -17,6 +19,9 @@ public class StartActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        sessionLogin = new SessionLogin(getApplicationContext());
+        sessionLogin.isLog();
         
         buttonConnection = (Button) findViewById(R.id.ButtonConnection);
         buttonConnection.setOnClickListener(new OnClickListener() {

@@ -2,14 +2,18 @@ package efrei.asyria.m1a.session;
 
 import java.util.HashMap;
 
+import efrei.asyria.m1a.smartcard.HomeActivity;
+import efrei.asyria.m1a.smartcard.StartActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 public class SessionLogin {
 
 	SharedPreferences pref;
-	
+
 	Editor editor;
 	Context context;
 	int PRIVATE_MODE = 0;
@@ -56,6 +60,8 @@ public class SessionLogin {
 	 */
 	public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String cadress, String ccountry) {
 		//editor.putInt(KEY_ID, id);
+
+        editor.putBoolean(IS_LOGIN, true);
 		editor.putString(KEY_ID, id);
 		editor.putString(KEY_USERNAME, u);
 		editor.putString(KEY_EMAIL, email);
@@ -90,4 +96,26 @@ public class SessionLogin {
 		
 		return user;
 	}
+	
+	 public void isLog(){
+        if(pref.getBoolean(IS_LOGIN, false)){
+        	System.out.println("iS LOG");
+            Intent i = new Intent(context, HomeActivity.class);
+        	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
+            
+        }   
+        System.out.println("NOT LOG");
+    }
+	 
+	 public void logout() {
+		 editor.clear();
+		 editor.commit();
+		 System.out.println("Logout");
+		 Intent i = new Intent(context, StartActivity.class);
+		 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		 context.startActivity(i);
+	 }
 }

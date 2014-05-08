@@ -4,78 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:hint="@string/etLogin"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etLogin"
-        android:layout_below="@+id/etLogin"
-        android:ems="10"
-        android:hint="@string/etSurname"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etSurname"
-        android:layout_below="@+id/etSurname"
-        android:ems="10"
-        android:hint="@string/etName"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etName"
-        android:layout_below="@+id/etName"
-        android:ems="10"
-        android:hint="@string/etMail"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etMail"
-        android:layout_below="@+id/etMail"
-        android:ems="10"
-        android:hint="@string/etPhone"
-        android:inputType="phone"/>
-
-    <EditText
-        android:id="@+id/etPwd1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonValidConnexion"
-        android:layout_alignLeft="@+id/etPhone"
-        android:layout_marginBottom="54dp"
-        android:ems="10"
-        android:hint="@string/etPwd1"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/etPwd2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etPwd1"
-        android:layout_alignLeft="@+id/etPwd1"
-        android:ems="10"
-        android:hint="@string/etPwd2"
-        android:inputType="textPersonName" />
-
     <Button
         android:id="@+id/buttonValidInscription"
         android:layout_width="wrap_content"
@@ -84,5 +12,51 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
         android:text="@string/validButton" />
+
+    <EditText
+        android:id="@+id/etPwd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPwd1"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/etPwd2"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPwd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPwd2"
+        android:layout_alignLeft="@+id/etMail"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:hint="@string/etPwd1"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etPwd1"
+        android:layout_alignLeft="@+id/etLogin"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/etMail"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etMail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:ems="10"
+        android:hint="@string/etLogin"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
