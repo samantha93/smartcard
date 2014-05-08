@@ -45,8 +45,8 @@ public class MyAccountFragment extends Fragment {
 		tvPhone2 = (TextView) rootView.findViewById(R.id.tvPhone2);
 		tvJob = (TextView) rootView.findViewById(R.id.tvJob);
 		tvCname = (TextView) rootView.findViewById(R.id.tvCname);
-		tvCcity = (TextView) rootView.findViewById(R.id.tvCcity);
 		tvCadress = (TextView) rootView.findViewById(R.id.tvCadress);
+		tvCcity = (TextView) rootView.findViewById(R.id.tvCcity);
 		tvCcountry = (TextView) rootView.findViewById(R.id.tvCcountry);
 
 		System.out.println(user.get(SessionLogin.KEY_USERNAME));
@@ -58,8 +58,8 @@ public class MyAccountFragment extends Fragment {
 		tvPhone2.setText(user.get(SessionLogin.KEY_PHONE2));
 		tvJob.setText(user.get(SessionLogin.KEY_JOB));
 		tvCname.setText(user.get(SessionLogin.KEY_CNAME));
-		tvCcity.setText(user.get(SessionLogin.KEY_CCITY));
 		tvCcountry.setText(user.get(SessionLogin.KEY_CADRESS));
+		tvCcity.setText(user.get(SessionLogin.KEY_CCITY));
 		tvCadress.setText(user.get(SessionLogin.KEY_CCOUNTRY));
 		
 		return rootView;

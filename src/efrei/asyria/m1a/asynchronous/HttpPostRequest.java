@@ -38,9 +38,11 @@ public class HttpPostRequest extends AsyncTask<String, Void, String>
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpPost request = new HttpPost(url);
 
-			UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParam);
-
-			request.setEntity(formEntity);
+			if (postParam != null) {
+				UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParam);
+				
+				request.setEntity(formEntity);
+			}
 			HttpResponse httpResponse = httpClient.execute(request);
 			inBuffer = new BufferedReader(
 				new InputStreamReader(

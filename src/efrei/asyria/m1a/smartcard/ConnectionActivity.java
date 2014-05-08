@@ -106,6 +106,7 @@ public class ConnectionActivity extends Activity {
 						startActivity(i);
 					} catch (Throwable t) {
 						tvError.setText(R.string.connectionError);
+						progressDialog.dismiss();
 						Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
 					}
 				} catch (InterruptedException e) {

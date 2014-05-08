@@ -97,6 +97,10 @@ public class SessionLogin {
 		return user;
 	}
 	
+	public String getId() {
+		return pref.getString(KEY_ID, null);
+	}
+	
 	 public void isLog(){
         if(pref.getBoolean(IS_LOGIN, false)){
         	System.out.println("iS LOG");

@@ -1,5 +1,6 @@
 package efrei.asyria.m1a.adapter;
 
+import java.net.URI;
 import java.util.List;
 
 import efrei.asyria.m1a.model.Card;
@@ -50,19 +51,32 @@ public class ListCardAdapter extends BaseAdapter {
 		viewHolder.tvPhoneF.setText(mList.get(position).getUser().getPhoneF());
 		viewHolder.tvPhoneM.setText(mList.get(position).getUser().getPhoneM());
 		viewHolder.tvEmail.setText(mList.get(position).getUser().getEmail());
-
-		int i=0;
-		String img = mList.get(position).getUrlImg();
-		img = img.substring(img.length() - 1);
-		
+		int i = 1;
 		try {
-			i = Integer.parseInt(img);
+			System.out.println("uriimgnumber="+mList.get(position).getUrlImg());
+			i = Integer.parseInt(mList.get(position).getUrlImg());
+			//viewHolder.imageView.setImageURI(Uri.parse("@http://smart-card.fr/images/carte-visite-"+i+".png"));
+			switch (i) {
+				case 1:
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite1);
+					break;
+				case 2:
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
+					break;
+				case 3:
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite3);
+					break;
+				case 4:
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite4);
+					break;
+				case 5:
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
+					break;
+			}
+			
 		} catch (NumberFormatException nfe) {
 			System.out.println("Could not parse " + nfe);
 		}
-		
-		
-		viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
 		return v;
 	}
 

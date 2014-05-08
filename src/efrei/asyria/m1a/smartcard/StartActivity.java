@@ -28,7 +28,8 @@ public class StartActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				SessionLogin sessionLogin = new SessionLogin(getApplicationContext());
+		        sessionLogin.isLog();
 				Intent i = new Intent(StartActivity.this, ConnectionActivity.class);
 				startActivity(i);
 			}

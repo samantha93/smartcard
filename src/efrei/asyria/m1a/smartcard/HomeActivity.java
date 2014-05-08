@@ -180,8 +180,9 @@ public class HomeActivity extends Activity {
 	        	ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
 	    		progressDialog.setMessage("Deconnexion...");
 	        	String url = "http://dev.smart-card.fr/logout";
-				try {
-					String result = new HttpGetRequest(progressDialog).execute(url).get();
+	        	sessionLogin.logout();
+				/*try {
+					String result = new HttpGetRequest(null, null).execute(url).get();
 					sessionLogin.logout();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -189,7 +190,7 @@ public class HomeActivity extends Activity {
 				} catch (ExecutionException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 	            break;
 	        default:
 	            break;

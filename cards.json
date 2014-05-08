@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "user": {
+            "idUser": "1",
+            "username": "coco",
+            "email": "fred@plop.fr",
+            "name": "fred",
+            "surname": "fred",
+            "phone1": "2225789663"
+            "phone2": "21608750",
+            "statut": "admin",
+            "idCard": "1",
+            "job": "developer",
+            "idTemplate": "1",
+            "idCompany": "1",
+            "cName": "ITS",
+            "cAdress": "1 rue de toto",
+            "cCity": "Paris",
+            "cCountry": "France"
+        },
+        "cards_id": "2",
+        "created_at": "2014-04-13 21:13:21",
+        "updated_at": "2014-04-13 21:13:21"
+    },
+    {
+        "id": "2",
+        "user": {
+            "idUser": "1",
+            "username": "admin",
+            "email": "pierre@plop.fr",
+            "name": "pierre",
+            "surname": "pierre",
+            "phone1": "21608749",
+            "phone2": "21608750",
+            "statut": "admin",
+            "idCard": "1",
+            "job": "developer",
+            "idTemplate": "1",
+            "idCompany": "1",
+            "cName": "ITS",
+            "cAdress": "1 rue de toto",
+            "cCity": "Paris",
+            "cCountry": "France"
+        },
+        "cards_id": "3",
+        "created_at": "2014-04-13 21:22:11",
+        "updated_at": "2014-04-13 21:22:11"
+    }
+]
