@@ -17,20 +17,26 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="efrei.asyria.m1a.smartcard.StartActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.InscriptionActivity" >
+        <activity android:name="efrei.asyria.m1a.smartcard.InscriptionActivity" 
+            android:screenOrientation="landscape">
+            
         </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.CardListActivity" >
+        <activity android:name="efrei.asyria.m1a.smartcard.CardListActivity" android:screenOrientation="portrait">
+            
         </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.ConnectionActivity" >
+        <activity android:name="efrei.asyria.m1a.smartcard.ConnectionActivity" android:screenOrientation="portrait">
+            
         </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.HomeActivity" >
+        <activity android:name="efrei.asyria.m1a.smartcard.HomeActivity" android:screenOrientation="portrait">
+            
         </activity>
         <activity android:name="efrei.asyria.m1a.smartcard.BeamActivity" >
         </activity>
