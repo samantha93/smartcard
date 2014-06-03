@@ -83,7 +83,22 @@ public class CardListFragment extends Fragment {
 				User u2 = new User(2, "Le Collonnier", "Vincent", "50 rue de l'etoile", 75003, "Paris", "0206568743", "0698347525", "vincentlecollonnier@gmail.com");
 				
 				for (int i=0; i<listCards.size(); i++) {
-					mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u1, listCards.get(i).getString("cards_id")));
+					String idd = listCards.get(i).getString("users_id");
+					String url2 = "http://dev.smart-card.fr/user?id="+idd;
+					String r = new HttpGetRequest(url2).execute().get();
+					JSONObject userr = new JSONObject(r);
+
+					System.out.println("user");
+					User u = null;
+					if (userr.getString("success").equals("true")) {
+						u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"), userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"), userr.getString("phone2"), userr.getString("email"));
+						System.out.println(u);
+					} else {
+						System.out.println("not good");
+						continue;
+					}
+					System.out.println("end user");
+					mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u, listCards.get(i).getString("cards_id")));
 				}
 				
 				//mList.add(new Card(1, u1, "cartevisite"));

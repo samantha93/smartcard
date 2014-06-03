@@ -4,20 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/etLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:hint="@string/etLogin"
-        android:ems="10"
-        android:inputType="textPersonName" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
@@ -34,22 +20,33 @@
         android:layout_centerVertical="true"
         android:text="@string/validButton" />
 
-    <EditText
-        android:id="@+id/etPwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etLogin"
-        android:layout_below="@+id/etLogin"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="@string/etPwd"
-        android:inputType="textPassword" />
-
     <TextView
         android:id="@+id/tvError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/Button01"
         android:layout_marginTop="29dp" />
+
+    <EditText
+        android:id="@+id/etPwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etLogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="@string/etPwd"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPwd"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="74dp"
+        android:ems="10"
+        android:hint="@string/etLogin"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>
