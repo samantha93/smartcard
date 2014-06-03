@@ -184,7 +184,7 @@
         android:text="Pays : "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
+    <!--<EditText
         android:id="@+id/etPwdNow"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
@@ -226,6 +226,6 @@
         android:layout_below="@+id/etPwdNew2"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:text="Changer de mot de passe" />
+        android:text="Changer de mot de passe" />-->
 
 </RelativeLayout>

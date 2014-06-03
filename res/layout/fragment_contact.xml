@@ -7,39 +7,50 @@
         android:id="@+id/tvMages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="@string/tvMages" />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/tvTran"
+        android:layout_marginTop="24dp"
+        android:text="@string/tvMages"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvBenzohra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvAlwis"
         android:layout_below="@+id/tvMages"
-        android:layout_marginLeft="20dp"
-        android:text="@string/tvBenzohra" />
+        android:layout_marginTop="24dp"
+        android:text="@string/tvBenzohra"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvTran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBenzohra"
-        android:layout_marginLeft="20dp"
-        android:text="@string/tvTran" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/tvTran"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvLecollonnier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTran"
-        android:layout_marginLeft="20dp"
-        android:text="@string/tvLecollonnier" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/tvLecollonnier"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tvAlwis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvLecollonnier"
-        android:layout_marginLeft="20dp"
-        android:text="@string/tvAlwis" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/tvAlwis"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

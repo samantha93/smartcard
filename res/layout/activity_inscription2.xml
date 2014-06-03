@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/etP1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etName"
+        android:layout_below="@+id/etName"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Fixe"
+        android:inputType="phone" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/etP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etP1"
+        android:layout_below="@+id/etP1"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Mobile"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/bNext2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/etP2"
+        android:layout_marginBottom="52dp"
+        android:layout_marginRight="59dp"
+        android:text="Suivant" />
+
+    <EditText
+        android:id="@+id/etSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSurname"
+        android:layout_below="@+id/etSurname"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Prénom"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvErr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bNext2"
+        android:layout_alignLeft="@+id/etP2"
+        android:layout_marginBottom="36dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

@@ -78,25 +78,15 @@ public class InscriptionActivity extends Activity {
 					try {
 						progressDialog.show();
 						String result = new HttpPostRequest(url, postParameters).execute().get();
-						
+						JSONObject obj = new JSONObject(result);
+						String id = obj.getString("idUser");
 						//String result = new HttpGetRequest(progressDialog).execute(url).get();
-						System.out.println(result);
-						/*try {
-							JSONObject obj = new JSONObject(result);
-							String id = obj.getString("idUser");
-							String username = obj.getString("username");
-							String email = obj.getString("email");
-							SessionLogin sessionLogin = new SessionLogin(getApplicationContext());
+						System.out.println("isuser=>"+id);
 
-	//						public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String ccountry) {
-							
-							sessionLogin.createLoginSession(id, username, email, obj.getString("name"), obj.getString("surname"), obj.getString("phone1"), obj.getString("phone2"), obj.getString("job"), obj.getString("cName"), obj.getString("cCity"), obj.getString("cAdress"), obj.getString("cCountry"));
-							Intent i = new Intent(InscriptionActivity.this, ConnectionActivity.class);
-							startActivity(i);
-						} catch (Throwable t) {
-							tvError.setText(R.string.connectionError);
-							Log.e("My App", "Could not parse malformed JSON: \"" + result + "\"");
-						}*/
+						progressDialog.dismiss();
+						Intent i = new Intent (InscriptionActivity.this, Inscription2Activity.class);
+						i.putExtra("id", id);
+						startActivity(i);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					} catch (ExecutionException e) {
@@ -104,7 +94,7 @@ public class InscriptionActivity extends Activity {
 					}
 				
 				} catch (Exception e) {
-					
+					System.out.println(e);
 				}
 				//Intent i = new Intent(InscriptionActivity.this, HomeActivity.class);
 				//startActivity(i);

@@ -29,6 +29,14 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name="efrei.asyria.m1a.smartcard.Inscription2Activity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name="efrei.asyria.m1a.smartcard.Inscription3Activity"
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name="efrei.asyria.m1a.smartcard.CardListActivity" android:screenOrientation="portrait">
 
         </activity>
