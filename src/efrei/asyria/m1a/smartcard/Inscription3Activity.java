@@ -25,73 +25,90 @@ import android.widget.TextView;
 public class Inscription3Activity extends Activity {
 	
 	private Button buttonInscription;
-	private EditText etS;
+	private EditText etJ;
+	private EditText etA;
+	private EditText etC;
+	private EditText etP;
 	private EditText etN;
-	private EditText etP1;
-	private EditText etP2;
 	private String idU;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_inscription2);
+		setContentView(R.layout.activity_inscription3);
 		
 		Bundle extras = getIntent().getExtras();
     	idU = extras.getString("id");
-    	System.out.println("id=>"+idU);
-		etS = (EditText) findViewById(R.id.etSurname);
-		etN = (EditText) findViewById(R.id.etName);
-		etP1 = (EditText) findViewById(R.id.etP1);
-		etP2 = (EditText) findViewById(R.id.etP2);
-		buttonInscription = (Button) findViewById(R.id.bNext2);
+		etJ = (EditText) findViewById(R.id.etJob);
+		etN = (EditText) findViewById(R.id.etCName);
+		etC = (EditText) findViewById(R.id.etCCity);
+		etA = (EditText) findViewById(R.id.etCAdress);
+		etP = (EditText) findViewById(R.id.etCCountry);
+		buttonInscription = (Button) findViewById(R.id.buttonValidInscr);
 		buttonInscription.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				ProgressDialog progressDialog = new ProgressDialog(Inscription3Activity.this);
 				progressDialog.setIndeterminate(false);
-				progressDialog.setMessage("Suivant...");
+				progressDialog.setMessage("Inscriptio...");
 				progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				String error = "Erreur";
 				
 				try {
-					if (etS.getText().toString().equals("")) {
-						error="nom vide";
+					if (etJ.getText().toString().equals("")) {
+						error="Job vide";
 						throw new Exception();
 					}
 					if (etN.getText().toString().equals("")) {
-						error="prénom vide";
-						throw new Exception();
-					}
-									
-					if (etP1.getText().toString().equals("")) {
-						error="fixe vide";
+						error="Nom entreprise vide";
 						throw new Exception();
 					}
 					
-					if (etP2.getText().toString().equals("")) {
-						error="mobile vide";
+					if (etC.getText().toString().equals("")) {
+						error="Ville vide";
+						throw new Exception();
+					}				
+					if (etA.getText().toString().equals("")) {
+						error="Addresse vide";
+						throw new Exception();
+					}
+					
+					if (etP.getText().toString().equals("")) {
+						error="Pays vide";
 						throw new Exception();
 					}
 					
 
-					String url = "http://dev.smart-card.fr/modifierUser";
+					String url = "http://dev.smart-card.fr/creerCompany";
 					List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-					postParameters.add(new BasicNameValuePair("id", idU));
 					postParameters.add(new BasicNameValuePair("name", etN.getText().toString()));
-					postParameters.add(new BasicNameValuePair("surname", etS.getText().toString()));
-					postParameters.add(new BasicNameValuePair("phone1", etP1.getText().toString()));
-					postParameters.add(new BasicNameValuePair("phone2", etP2.getText().toString()));
+					postParameters.add(new BasicNameValuePair("adress", etA.getText().toString()));
+					postParameters.add(new BasicNameValuePair("city", etC.getText().toString()));
+					postParameters.add(new BasicNameValuePair("country", etP.getText().toString()));
 					try {
 						progressDialog.show();
 						String result = new HttpPostRequest(url, postParameters).execute().get();
 						JSONObject obj = new JSONObject(result);
 						if (obj.getString("success").equals("true")) {
-							System.out.println("isuser3=>"+idU);
+							System.out.println(obj.getString("id"));
+							
+							String url2 = "http://dev.smart-card.fr/creerCard";
+							List<NameValuePair> postParameters2 = new ArrayList<NameValuePair>();
+							postParameters2.add(new BasicNameValuePair("job", etJ.getText().toString()));
+							postParameters2.add(new BasicNameValuePair("idTemplate", "1"));
+							postParameters2.add(new BasicNameValuePair("companys_id", obj.getString("id")));
+							
+							String rrr = new HttpPostRequest(url2, postParameters2).execute().get();
+							JSONObject obj2 = new JSONObject(rrr);
+							if (obj2.getString("success").equals("true")) {
 
-							progressDialog.dismiss();
-							Intent i = new Intent (Inscription3Activity.this, Inscription3Activity.class);
+								progressDialog.dismiss();
+								Intent i = new Intent (Inscription3Activity.this, ConnectionActivity.class);
+								startActivity(i);
+							}
+							/*Intent i = new Intent (Inscription3Activity.this, Inscription3Activity.class);
 							i.putExtra("id", idU);
-							startActivity(i);
+							startActivity(i);*/
 						}
 
 						progressDialog.dismiss();
@@ -103,7 +120,7 @@ public class Inscription3Activity extends Activity {
 				
 				} catch (Exception e) {
 					System.out.println(e.toString());
-					TextView t = (TextView) findViewById(R.id.tvErr);
+					TextView t = (TextView) findViewById(R.id.tvErr3);
 					t.setText(error);
 				}
 				//Intent i = new Intent(InscriptionActivity.this, HomeActivity.class);
