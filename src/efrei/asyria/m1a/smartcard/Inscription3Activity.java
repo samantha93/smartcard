@@ -94,6 +94,7 @@ public class Inscription3Activity extends Activity {
 							
 							String url2 = "http://dev.smart-card.fr/creerCard";
 							List<NameValuePair> postParameters2 = new ArrayList<NameValuePair>();
+							postParameters2.add(new BasicNameValuePair("idUser", idU));
 							postParameters2.add(new BasicNameValuePair("job", etJ.getText().toString()));
 							postParameters2.add(new BasicNameValuePair("idTemplate", "1"));
 							postParameters2.add(new BasicNameValuePair("companys_id", obj.getString("id")));
