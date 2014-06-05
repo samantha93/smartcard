@@ -50,7 +50,7 @@ public class Inscription3Activity extends Activity {
 			public void onClick(View v) {
 				ProgressDialog progressDialog = new ProgressDialog(Inscription3Activity.this);
 				progressDialog.setIndeterminate(false);
-				progressDialog.setMessage("Inscriptio...");
+				progressDialog.setMessage("Inscription...");
 				progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				String error = "Erreur";
 				
