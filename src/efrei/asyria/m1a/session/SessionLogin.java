@@ -30,6 +30,7 @@ public class SessionLogin {
 	public static final String KEY_CADRESS = "cadress";
 	public static final String KEY_CCITY = "ccity";
 	public static final String KEY_CCOUNTRY = "ccountry";
+	public static final String KEY_TEMPLATE = "idTemp";
 	
 	private static final String IS_LOGIN = "isLog";
 	private static final String PREF_NAME = "LoginPref";
@@ -58,7 +59,7 @@ public class SessionLogin {
 	 "cCity":"Paris",
 	 "cCountry":"France"}
 	 */
-	public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String cadress, String ccountry) {
+	public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String cadress, String ccountry, String tt) {
 		//editor.putInt(KEY_ID, id);
 
         editor.putBoolean(IS_LOGIN, true);
@@ -73,6 +74,7 @@ public class SessionLogin {
 		editor.putString(KEY_CADRESS, cadress);
 		editor.putString(KEY_CCITY, ccity);
 		editor.putString(KEY_CCOUNTRY, ccountry);
+		editor.putString(KEY_TEMPLATE, tt);
 
 		//editor.putString(KEY_EMAIL, email);
 		
@@ -93,6 +95,7 @@ public class SessionLogin {
 		user.put(KEY_CCITY, pref.getString(KEY_CCITY, null));
 		user.put(KEY_CADRESS, pref.getString(KEY_CADRESS, null));
 		user.put(KEY_CCOUNTRY, pref.getString(KEY_CCOUNTRY, null));
+		user.put(KEY_TEMPLATE, pref.getString(KEY_TEMPLATE,  null));
 		
 		return user;
 	}
