@@ -4,10 +4,12 @@ import java.util.HashMap;
 
 import efrei.asyria.m1a.session.SessionLogin;
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MyCardFragment extends Fragment {
@@ -54,7 +56,27 @@ public class MyCardFragment extends Fragment {
 		//tvCname.setText(user.get(SessionLogin.KEY_CNAME));
 		tvCadress.setText(user.get(SessionLogin.KEY_CADRESS));
 		tvCcity.setText(user.get(SessionLogin.KEY_CCITY));
-		
+		ImageView ii = (ImageView) rootView.findViewById(R.id.imgCV);
+		String nn = user.get(SessionLogin.KEY_TEMPLATE);
+		System.out.println("deeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+		System.out.println(nn);
+		switch ((Integer.parseInt(nn))) {
+		case 1:
+			ii.setImageResource(R.drawable.cartevisite1);
+			break;
+		case 2:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+		case 3:
+			ii.setImageResource(R.drawable.cartevisite3);
+			break;
+		case 4:
+			ii.setImageResource(R.drawable.cartevisite4);
+			break;
+		case 5:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+	}
 		return rootView;
     }
 }
