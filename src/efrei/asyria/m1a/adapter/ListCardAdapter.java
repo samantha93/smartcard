@@ -61,7 +61,7 @@ public class ListCardAdapter extends BaseAdapter {
 					viewHolder.imageView.setImageResource(R.drawable.cartevisite1);
 					break;
 				case 2:
-					viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite2);
 					break;
 				case 3:
 					viewHolder.imageView.setImageResource(R.drawable.cartevisite3);
@@ -70,7 +70,7 @@ public class ListCardAdapter extends BaseAdapter {
 					viewHolder.imageView.setImageResource(R.drawable.cartevisite4);
 					break;
 				case 5:
-					viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite2);
 					break;
 			}
 			
