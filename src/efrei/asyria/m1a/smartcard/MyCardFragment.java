@@ -37,12 +37,12 @@ public class MyCardFragment extends Fragment {
 
     	session = new SessionLogin(container.getContext());
         HashMap<String, String> user = session.getUserInfo();
-		tvName = (TextView) rootView.findViewById(R.id.name);
+		tvName = (TextView) rootView.findViewById(R.id.tvName);
 		tvEmail = (TextView) rootView.findViewById(R.id.email);
 		tvPhone1 = (TextView) rootView.findViewById(R.id.phoneF);
 		tvPhone2 = (TextView) rootView.findViewById(R.id.phoneM);
 		//tvJob = (TextView) rootView.findViewById(R.id.tvJob);
-		//tvCname = (TextView) rootView.findViewById(R.id.tvCname);
+		tvCname = (TextView) rootView.findViewById(R.id.cname);
 		tvCadress = (TextView) rootView.findViewById(R.id.adress);
 		tvCcity = (TextView) rootView.findViewById(R.id.cpCity);
 
@@ -53,12 +53,14 @@ public class MyCardFragment extends Fragment {
 		tvEmail.setText(user.get(SessionLogin.KEY_EMAIL));
 		tvPhone1.setText(user.get(SessionLogin.KEY_PHONE1));
 		tvPhone2.setText(user.get(SessionLogin.KEY_PHONE2));
-		//tvCname.setText(user.get(SessionLogin.KEY_CNAME));
+		tvCname.setText(user.get(SessionLogin.KEY_CNAME));
 		tvCadress.setText(user.get(SessionLogin.KEY_CADRESS));
 		tvCcity.setText(user.get(SessionLogin.KEY_CCITY));
+		TextView tvj = (TextView) rootView.findViewById(R.id.tvJob);
+		tvj.setText(user.get(SessionLogin.KEY_JOB));
+		
 		ImageView ii = (ImageView) rootView.findViewById(R.id.imgCV);
 		String nn = user.get(SessionLogin.KEY_TEMPLATE);
-		System.out.println("deeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		System.out.println(nn);
 		switch ((Integer.parseInt(nn))) {
 		case 1:

@@ -49,7 +49,7 @@ public class CardListFragment extends Fragment {
 		
 		ProgressDialog progressDialog = new ProgressDialog(inflater.getContext());
 		progressDialog.setIndeterminate(false);
-		progressDialog.setMessage("Connexion...");
+		progressDialog.setMessage("Chargement...");
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.show();
 		
@@ -104,7 +104,10 @@ public class CardListFragment extends Fragment {
 	
 						User u = null;
 						if (userr.getString("success").equals("true")) {
-							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"), userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"), userr.getString("phone2"), userr.getString("email"));
+							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), 
+									userr.getString("name"), userr.getString("cAdress"), 78965, userr.getString("cCity"), 
+									userr.getString("phone1"), userr.getString("phone2"), userr.getString("email"), 
+									userr.getString("cName"), userr.getString("job"));
 							System.out.println(u);
 						} else {
 							System.out.println("not good");

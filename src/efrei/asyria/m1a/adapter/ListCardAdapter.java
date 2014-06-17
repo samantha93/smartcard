@@ -51,6 +51,8 @@ public class ListCardAdapter extends BaseAdapter {
 		viewHolder.tvPhoneF.setText(mList.get(position).getUser().getPhoneF());
 		viewHolder.tvPhoneM.setText(mList.get(position).getUser().getPhoneM());
 		viewHolder.tvEmail.setText(mList.get(position).getUser().getEmail());
+		viewHolder.tvJ.setText(mList.get(position).getUser().getJob());
+		viewHolder.tvCn.setText(mList.get(position).getUser().getCname());
 		int i = 1;
 		try {
 			System.out.println("uriimgnumber="+mList.get(position).getUrlImg());
@@ -105,6 +107,8 @@ class CompleteListViewHolder {
 	public TextView tvPhoneF;
 	public TextView tvPhoneM;
 	public TextView tvEmail;
+	public TextView tvJ;
+	public TextView tvCn;
 
 	public CompleteListViewHolder(View base) {
 		imageView = (ImageView) base.findViewById(R.id.imgCV);
@@ -114,6 +118,8 @@ class CompleteListViewHolder {
 		tvPhoneF = (TextView) base.findViewById(R.id.phoneF);
 		tvPhoneM = (TextView) base.findViewById(R.id.phoneM);
 		tvEmail = (TextView) base.findViewById(R.id.email);
+		tvJ = (TextView) base.findViewById(R.id.tvJob);
+		tvCn = (TextView) base.findViewById(R.id.cname);
 
 	}
 }
