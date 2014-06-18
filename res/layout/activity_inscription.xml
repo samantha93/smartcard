@@ -11,7 +11,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
-        android:text="@string/validButton" />
+        android:text="Suivant (1/3)" />
 
     <EditText
         android:id="@+id/etPwd2"
@@ -57,6 +57,18 @@
         android:layout_marginBottom="22dp"
         android:ems="10"
         android:hint="@string/etLogin"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName" >
+        
+        
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonValidInscription"
+        android:layout_alignLeft="@+id/etPwd2"
+        android:layout_marginBottom="53dp" />
 
 </RelativeLayout>

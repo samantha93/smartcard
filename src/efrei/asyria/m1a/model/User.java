@@ -11,9 +11,11 @@ public class User {
 	private String phoneF;
 	private String phoneM;
 	private String email;
+	private String cname;
+	private String job;
 
 	public User(int id, String surname, String name, String adress, int cp,
-			String city, String phoneF, String phoneM, String email) {
+			String city, String phoneF, String phoneM, String email, String cname, String job) {
 		super();
 		this.id = id;
 		this.surname = surname;
@@ -24,6 +26,24 @@ public class User {
 		this.phoneF = phoneF;
 		this.phoneM = phoneM;
 		this.email = email;
+		this.job = job;
+		this.cname = cname;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getJob() {
+		return job;
+	}
+
+	public void setJob(String job) {
+		this.job = job;
 	}
 
 	public int getId() {

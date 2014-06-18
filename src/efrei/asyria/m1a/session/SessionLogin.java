@@ -30,6 +30,7 @@ public class SessionLogin {
 	public static final String KEY_CADRESS = "cadress";
 	public static final String KEY_CCITY = "ccity";
 	public static final String KEY_CCOUNTRY = "ccountry";
+	public static final String KEY_TEMPLATE = "idTemplate";
 	public static final String KEY_CARD = "idCard";
 	
 	private static final String IS_LOGIN = "isLog";
@@ -61,7 +62,7 @@ public class SessionLogin {
 	 */
 	public void createLoginSession(String id, String u, String email, String name, String surname,
 			String phone1, String phone2, String job, String cname, String ccity, String cadress,
-			String ccountry, String idCard) {
+			String ccountry, String idTemplate, String idCard) {
 		//editor.putInt(KEY_ID, id);
 
         editor.putBoolean(IS_LOGIN, true);

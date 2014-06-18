@@ -11,17 +11,22 @@ import org.json.JSONObject;
 
 import efrei.asyria.m1a.adapter.ListCardAdapter;
 import efrei.asyria.m1a.asynchronous.HttpGetRequest;
+import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.model.User;
 import efrei.asyria.m1a.session.SessionLogin;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -44,7 +49,7 @@ public class CardListFragment extends Fragment {
 		
 		ProgressDialog progressDialog = new ProgressDialog(inflater.getContext());
 		progressDialog.setIndeterminate(false);
-		progressDialog.setMessage("Connexion...");
+		progressDialog.setMessage("Chargement...");
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.show();
 		
@@ -106,7 +111,9 @@ public class CardListFragment extends Fragment {
 	
 						User u = null;
 						if (userr.getString("success").equals("true")) {
-							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"), userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"), userr.getString("phone2"), userr.getString("email"));
+							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"),
+									userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"),
+									userr.getString("phone2"), userr.getString("email"), userr.getString("cName"), userr.getString("job"));
 							System.out.println(u);
 						} else {
 							System.out.println("not good");

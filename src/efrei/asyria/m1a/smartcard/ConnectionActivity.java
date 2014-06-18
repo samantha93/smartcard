@@ -1,28 +1,19 @@
 package efrei.asyria.m1a.smartcard;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import efrei.asyria.m1a.asynchronous.HttpGetRequest;
 import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.session.SessionLogin;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -101,7 +92,11 @@ public class ConnectionActivity extends Activity {
 						}*/
 //						public void createLoginSession(String id, String u, String email, String name, String surname, String phone1, String phone2, String job, String cname, String ccity, String ccountry) {
 						
-						sessionLogin.createLoginSession(id, username, email, obj.getString("name"), obj.getString("surname"), obj.getString("phone1"), obj.getString("phone2"), obj.getString("job"), obj.getString("cName"), obj.getString("cCity"), obj.getString("cAdress"), obj.getString("cCountry"), obj.getString("idCard"));
+						sessionLogin.createLoginSession(id, username, email, obj.getString("name"), 
+								obj.getString("surname"), obj.getString("phone1"), obj.getString("phone2"), 
+								obj.getString("job"), obj.getString("cName"), obj.getString("cCity"), 
+								obj.getString("cAdress"), obj.getString("cCountry"), 
+								obj.getString("idTemplate"), obj.getString("idCard"));
 						Intent i = new Intent(ConnectionActivity.this, HomeActivity.class);
 						startActivity(i);
 					} catch (Throwable t) {

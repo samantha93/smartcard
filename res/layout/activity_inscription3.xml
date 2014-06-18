@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/buttonValidInscription"
+        android:id="@+id/buttonValidInscr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -13,50 +13,69 @@
         android:layout_marginBottom="36dp"
         android:text="@string/validButton" />
 
-    <EditText
-        android:id="@+id/etPwd2"
+    <TextView
+        android:id="@+id/tvErr3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etPwd1"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="@string/etPwd2"
-        android:inputType="textPassword" />
+        android:layout_above="@+id/buttonValidInscr"
+        android:layout_alignLeft="@+id/etCCountry"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="18dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/etPwd1"
+        android:id="@+id/etJob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etPwd2"
-        android:layout_alignLeft="@+id/etMail"
-        android:layout_marginBottom="17dp"
+        android:layout_alignLeft="@+id/etCName"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="54dp"
         android:ems="10"
-        android:hint="@string/etPwd1"
-        android:inputType="textPassword" >
+        android:hint="Emploi"
+        android:inputType="textPersonName" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/etMail"
+        android:id="@+id/etCCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etPwd1"
-        android:layout_alignLeft="@+id/etLogin"
-        android:layout_marginBottom="16dp"
+        android:layout_alignLeft="@+id/etCAdress"
+        android:layout_below="@+id/etCAdress"
         android:ems="10"
-        android:hint="@string/etMail"
+        android:hint="Ville"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etLogin"
+        android:id="@+id/etCName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etMail"
+        android:layout_below="@+id/etJob"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginTop="47dp"
         android:ems="10"
-        android:hint="@string/etLogin"
+        android:hint="Nom de l&apos;entreprise"
         android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etCAdress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etCName"
+        android:layout_below="@+id/etCName"
+        android:ems="10"
+        android:hint="Adresse"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etCCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etCCity"
+        android:layout_below="@+id/etCCity"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="France" />
 
 </RelativeLayout>
