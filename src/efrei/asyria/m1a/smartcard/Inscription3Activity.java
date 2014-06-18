@@ -102,7 +102,7 @@ public class Inscription3Activity extends Activity {
 							String rrr = new HttpPostRequest(url2, postParameters2).execute().get();
 							JSONObject obj2 = new JSONObject(rrr);
 							if (obj2.getString("success").equals("true")) {
-
+								obj2.getString("id");
 								progressDialog.dismiss();
 								Intent i = new Intent (Inscription3Activity.this, ConnectionActivity.class);
 								startActivity(i);
