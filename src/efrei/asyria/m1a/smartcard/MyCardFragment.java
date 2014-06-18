@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.session.SessionLogin;
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ public class MyCardFragment extends Fragment {
 	private Button bRadio;
 	private RadioGroup rGroup;
 
+	ImageView ii;
 
     SessionLogin session;
 	public MyCardFragment(){}
@@ -56,12 +58,12 @@ public class MyCardFragment extends Fragment {
 
     	session = new SessionLogin(container.getContext());
     	final HashMap<String, String> user = session.getUserInfo();
-		tvName = (TextView) rootView.findViewById(R.id.name);
+		tvName = (TextView) rootView.findViewById(R.id.tvName);
 		tvEmail = (TextView) rootView.findViewById(R.id.email);
 		tvPhone1 = (TextView) rootView.findViewById(R.id.phoneF);
 		tvPhone2 = (TextView) rootView.findViewById(R.id.phoneM);
 		//tvJob = (TextView) rootView.findViewById(R.id.tvJob);
-		//tvCname = (TextView) rootView.findViewById(R.id.tvCname);
+		tvCname = (TextView) rootView.findViewById(R.id.cname);
 		tvCadress = (TextView) rootView.findViewById(R.id.adress);
 		tvCcity = (TextView) rootView.findViewById(R.id.cpCity);
 
@@ -72,32 +74,15 @@ public class MyCardFragment extends Fragment {
 		tvEmail.setText(user.get(SessionLogin.KEY_EMAIL));
 		tvPhone1.setText(user.get(SessionLogin.KEY_PHONE1));
 		tvPhone2.setText(user.get(SessionLogin.KEY_PHONE2));
-		//tvCname.setText(user.get(SessionLogin.KEY_CNAME));
+		tvCname.setText(user.get(SessionLogin.KEY_CNAME));
 		tvCadress.setText(user.get(SessionLogin.KEY_CADRESS));
 		tvCcity.setText(user.get(SessionLogin.KEY_CCITY));
-		
 		TextView tvj = (TextView) rootView.findViewById(R.id.tvJob);
 		tvj.setText(user.get(SessionLogin.KEY_JOB));
 		
-		ImageView ii = (ImageView) rootView.findViewById(R.id.imgCV);
+		ii = (ImageView) rootView.findViewById(R.id.imgCV);
 		String nn = user.get(SessionLogin.KEY_TEMPLATE);
-		switch ((Integer.parseInt(nn))) {
-			case 1:
-				ii.setImageResource(R.drawable.cartevisite1);
-				break;
-			case 2:
-				ii.setImageResource(R.drawable.cartevisite2);
-				break;
-			case 3:
-				ii.setImageResource(R.drawable.cartevisite3);
-				break;
-			case 4:
-				ii.setImageResource(R.drawable.cartevisite4);
-				break;
-			case 5:
-				ii.setImageResource(R.drawable.cartevisite2);
-				break;
-		}
+		changeTpl(nn);
 		
 		bRadio.setOnClickListener(new OnClickListener() {
 			
@@ -117,9 +102,10 @@ public class MyCardFragment extends Fragment {
 				String rrr;
 				try {
 					rrr = new HttpPostRequest(url2, postParameters2).execute().get();
-					System.out.println(rrr);
 					JSONObject obj2 = new JSONObject(rrr);
-					System.out.println(obj2);
+					session.setTpl(tpl);
+
+					changeTpl(tpl);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -136,5 +122,23 @@ public class MyCardFragment extends Fragment {
 		return rootView;
     }
     
-    
+    public void changeTpl(String nn) {
+    	switch ((Integer.parseInt(nn))) {
+		case 1:
+			ii.setImageResource(R.drawable.cartevisite1);
+			break;
+		case 2:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+		case 3:
+			ii.setImageResource(R.drawable.cartevisite3);
+			break;
+		case 4:
+			ii.setImageResource(R.drawable.cartevisite4);
+			break;
+		case 5:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+		}
+    }
 }
