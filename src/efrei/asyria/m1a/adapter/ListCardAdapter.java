@@ -1,15 +1,11 @@
 package efrei.asyria.m1a.adapter;
 
-import java.net.URI;
 import java.util.List;
 
 import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.smartcard.R;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,14 +50,16 @@ public class ListCardAdapter extends BaseAdapter {
 		int i = 1;
 		try {
 			System.out.println("uriimgnumber="+mList.get(position).getUrlImg());
-			i = Integer.parseInt(mList.get(position).getUrlImg());
+			//i = Integer.parseInt(mList.get(position).getUrlImg());
+			// TODO revoir l'algo
+			i = Integer.parseInt(mList.get(position).getUrlImg().substring(mList.get(position).getUrlImg().length() - 1));
 			//viewHolder.imageView.setImageURI(Uri.parse("@http://smart-card.fr/images/carte-visite-"+i+".png"));
 			switch (i) {
 				case 1:
 					viewHolder.imageView.setImageResource(R.drawable.cartevisite1);
 					break;
 				case 2:
-					viewHolder.imageView.setImageResource(R.drawable.cartevisite5);
+					viewHolder.imageView.setImageResource(R.drawable.cartevisite2);
 					break;
 				case 3:
 					viewHolder.imageView.setImageResource(R.drawable.cartevisite3);

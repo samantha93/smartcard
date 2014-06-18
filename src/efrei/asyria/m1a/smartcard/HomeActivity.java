@@ -1,13 +1,20 @@
 package efrei.asyria.m1a.smartcard;
  
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import efrei.asyria.m1a.adapter.NavDrawerListAdapter;
-import efrei.asyria.m1a.asynchronous.HttpGetRequest;
+import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.menu.NavDrawerItem;
 import efrei.asyria.m1a.session.SessionLogin;
- 
+import efrei.asyria.m1a.utils.NFCUtils;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -15,20 +22,29 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.nfc.NfcAdapter.CreateNdefMessageCallback;
+import android.nfc.NfcEvent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
  
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements CreateNdefMessageCallback {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
+    
+    // NFC
+    NfcAdapter nfcAdapter;
  
     // nav drawer title
     private CharSequence mDrawerTitle;
@@ -48,6 +64,16 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+		if (nfcAdapter == null)
+		{
+			Toast.makeText(this, R.string.nfcUnavailable, Toast.LENGTH_LONG).show();
+			finish();
+			return;
+		}
+
+        nfcAdapter.setNdefPushMessageCallback(this, this);
  
         sessionLogin = new SessionLogin(getApplicationContext());        
         
@@ -173,10 +199,6 @@ public class HomeActivity extends Activity {
 	            fragment = new AboutFragment();
 	            break;
 	        case 5:
-	        	Intent i = new Intent(HomeActivity.this, BeamActivity.class);
-	        	startActivity(i);
-	        	break;
-	        case 6:
 	        	ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
 	    		progressDialog.setMessage("Deconnexion...");
 	        	String url = "http://dev.smart-card.fr/logout";
@@ -192,6 +214,10 @@ public class HomeActivity extends Activity {
 					e.printStackTrace();
 				}*/
 	            break;
+	        case 6:
+	        	Intent i = new Intent(HomeActivity.this, SimulateurActivity.class);
+	        	startActivity(i);
+	        	break;
 	        default:
 	            break;
         }
@@ -233,5 +259,59 @@ public class HomeActivity extends Activity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
- 
+
+	@Override
+	public NdefMessage createNdefMessage(NfcEvent event) {
+        HashMap<String, String> user = sessionLogin.getUserInfo();
+        
+        return NFCUtils.sendCard(user.get(SessionLogin.KEY_CARD));
+	}
+	
+    @Override
+    public void onResume() {
+        super.onResume();
+        
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction()))
+        {
+        	addCardToUser(getIntent());
+        }
+    }
+    
+	public void addCardToUser(Intent intent)
+	{
+        HashMap<String, String> user = sessionLogin.getUserInfo();
+        
+		// Recupere les donnees
+        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        NdefMessage msg = (NdefMessage) rawMsgs[0];
+        NdefRecord[] records = msg.getRecords();
+        String idCard = new String(records[0].getPayload());
+
+		String url = "http://dev.smart-card.fr/ajoutUserCards";
+		List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+		postParameters.add(new BasicNameValuePair("userId", user.get(SessionLogin.KEY_ID)));
+		postParameters.add(new BasicNameValuePair("cardId", idCard));
+		ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+		progressDialog.setIndeterminate(false);
+		progressDialog.setMessage("Ajout de la carte...");
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		progressDialog.show();
+		String result;
+		try {
+			result = new HttpPostRequest(url, postParameters).execute().get();
+			JSONObject obj = new JSONObject(result);
+			String success = obj.getString("success");
+			if (success.equals("true"))
+			{
+				Toast.makeText(this, "ajout de carte succes !", Toast.LENGTH_LONG).show();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		progressDialog.dismiss();
+    }
 }

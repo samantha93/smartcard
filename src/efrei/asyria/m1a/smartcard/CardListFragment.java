@@ -11,22 +11,17 @@ import org.json.JSONObject;
 
 import efrei.asyria.m1a.adapter.ListCardAdapter;
 import efrei.asyria.m1a.asynchronous.HttpGetRequest;
-import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.model.User;
 import efrei.asyria.m1a.session.SessionLogin;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -90,7 +85,14 @@ public class CardListFragment extends Fragment {
 				List<Card> mList = new ArrayList<Card>();
 				if (objList.length() == 0) {
 					System.out.println("nothing");
-					etE.setText("Aucune carte de visite n'a été ajoutée !"); 
+					etE.setText("Aucune carte de visite n'a été ajoutée !");
+
+					/*mList.add(new Card(1, new User(1, "surname", "name", "address", 94200, "city", "phoneF", "phoneM", "email"), "cartevisite1"));
+					mList.add(new Card(2, new User(2, "surname", "name", "address", 94200, "city", "phoneF", "phoneM", "email"), "cartevisite2"));
+					mList.add(new Card(3, new User(3, "surname", "name", "address", 94200, "city", "phoneF", "phoneM", "email"), "cartevisite3"));
+					listViewCards = (ListView) rootView.findViewById(R.id.listCard); 
+					ListCardAdapter adapter = new ListCardAdapter(this.getActivity(), mList);
+					listViewCards.setAdapter(adapter);*/
 				} else {
 					for (int i=0; i<objList.length(); i++) {
 						listCards.add(objList.getJSONObject(i));
@@ -112,7 +114,7 @@ public class CardListFragment extends Fragment {
 						}
 						mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u, listCards.get(i).getString("cards_id")));
 					}
-					
+
 					//mList.add(new Card(1, u1, "cartevisite"));
 					//mList.add(new Card(2, u2, "cartevisite"));
 	

@@ -25,34 +25,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.InscriptionActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.Inscription2Activity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.Inscription3Activity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.CardListActivity" android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.ConnectionActivity" android:screenOrientation="portrait">
-
-        </activity>
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.InscriptionActivity" android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.Inscription2Activity" android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.Inscription3Activity" android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.CardListActivity" android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.ConnectionActivity" android:screenOrientation="portrait"></activity>
+        
         <activity android:name="efrei.asyria.m1a.smartcard.HomeActivity" android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name="efrei.asyria.m1a.smartcard.BeamActivity" >
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="application/vnd.efrei.asyria.m1a.smartcard.beam"/>
+<!--                 <data android:mimeType="application/vnd.efrei.asyria.m1a.smartcard.beam"/> -->
             </intent-filter>
         </activity>
+        
+<!--         <activity android:name="efrei.asyria.m1a.smartcard.BeamActivity" > -->
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/> -->
+<!--                 <category android:name="android.intent.category.DEFAULT"/> -->
+<!--                 <data android:mimeType="application/vnd.efrei.asyria.m1a.smartcard.beam"/> -->
+<!--             </intent-filter> -->
+<!--         </activity> -->
+        
+        <activity android:name="efrei.asyria.m1a.smartcard.SimulateurActivity" ></activity>
     </application>
 
 </manifest>

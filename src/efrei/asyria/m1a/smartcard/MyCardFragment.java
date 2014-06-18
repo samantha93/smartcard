@@ -57,4 +57,6 @@ public class MyCardFragment extends Fragment {
 		
 		return rootView;
     }
+    
+    
 }
