@@ -64,12 +64,13 @@ public class Inscription3Activity extends Activity {
 						throw new Exception();
 					}
 					
+					if (etA.getText().toString().equals("")) {
+						error="Adresse vide";
+						throw new Exception();
+					}
+					
 					if (etC.getText().toString().equals("")) {
 						error="Ville vide";
-						throw new Exception();
-					}				
-					if (etA.getText().toString().equals("")) {
-						error="Addresse vide";
 						throw new Exception();
 					}
 					
@@ -124,8 +125,6 @@ public class Inscription3Activity extends Activity {
 					TextView t = (TextView) findViewById(R.id.tvErr3);
 					t.setText(error);
 				}
-				//Intent i = new Intent(InscriptionActivity.this, HomeActivity.class);
-				//startActivity(i);
 			}
 		});
 	}
@@ -133,7 +132,7 @@ public class Inscription3Activity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 }

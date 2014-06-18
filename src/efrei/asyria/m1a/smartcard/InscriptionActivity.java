@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class InscriptionActivity extends Activity {
 	
@@ -46,28 +47,32 @@ public class InscriptionActivity extends Activity {
 				progressDialog.setIndeterminate(false);
 				progressDialog.setMessage("Inscription...");
 				progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
+				String error="";
 				try {
 					if (etLogin.getText().toString().equals("")) {
-
-						System.out.println("login vide");
+						error="Lelogin est vide";
+						throw new Exception();
 					}
 					if (etMail.getText().toString().equals("")) {
 
-						System.out.println("mail vide");
+						error="Le mail est vide";
+						throw new Exception();
 					}
 									
 					if (etPwd1.getText().toString().equals("")) {
-
-						System.out.println("pwd1 vide");
+						error="Le mot de passe est vide";
+						throw new Exception();
 					}
 					
 					if (etPwd2.getText().toString().equals("")) {
-						System.out.println("pwd2 vide");
+						error="Le mot de passe est vide";
+						throw new Exception();
 					}
 					
-					if (!etPwd1.equals(etPwd2)) {
-
-						System.out.println("pwd1 et pwd2 different");
+					if (!etPwd1.getText().toString().equals(etPwd2.getText().toString())) {
+						error="Les mots de passe sont differents";
+						throw new Exception();
 					}
 
 					String url = "http://dev.smart-card.fr/inscription";
@@ -93,11 +98,16 @@ public class InscriptionActivity extends Activity {
 						e.printStackTrace();
 					}
 				
-				} catch (Exception e) {
-					System.out.println(e);
+				} catch (Exception e) {					
+					System.out.println(e.toString());
+					TextView t = (TextView) findViewById(R.id.tvError);
+					t.setText(error);
 				}
-				//Intent i = new Intent(InscriptionActivity.this, HomeActivity.class);
-				//startActivity(i);
+				/*
+				 progressDialog.dismiss();
+				Intent i = new Intent (InscriptionActivity.this, StartActivity.class);
+				startActivity(i);
+				 */
 			}
 		});
 	}
@@ -105,7 +115,7 @@ public class InscriptionActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		//getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 }
