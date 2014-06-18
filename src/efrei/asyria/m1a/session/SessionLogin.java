@@ -85,11 +85,12 @@ public class SessionLogin {
 		
 		editor.commit();
 	}
-	/*
-	public void setCard(String idc) {
-		editor.putString(KEY_CARD, idc);
+	
+	public void setTpl(String t) {
+		System.out.println("change template to "+t);
+		editor.putString(KEY_TEMPLATE, t);
 		editor.commit();
-	}*/
+	}
 	
 	public HashMap<String, String> getUserInfo() {
 		HashMap<String, String> user = new HashMap<String, String>();

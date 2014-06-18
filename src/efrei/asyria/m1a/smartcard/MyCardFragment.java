@@ -42,6 +42,7 @@ public class MyCardFragment extends Fragment {
 	private Button bRadio;
 	private RadioGroup rGroup;
 
+	ImageView ii;
 
     SessionLogin session;
 	public MyCardFragment(){}
@@ -78,25 +79,9 @@ public class MyCardFragment extends Fragment {
 		TextView tvj = (TextView) rootView.findViewById(R.id.tvJob);
 		tvj.setText(user.get(SessionLogin.KEY_JOB));
 		
-		ImageView ii = (ImageView) rootView.findViewById(R.id.imgCV);
+		ii = (ImageView) rootView.findViewById(R.id.imgCV);
 		String nn = user.get(SessionLogin.KEY_TEMPLATE);
-		switch ((Integer.parseInt(nn))) {
-			case 1:
-				ii.setImageResource(R.drawable.cartevisite1);
-				break;
-			case 2:
-				ii.setImageResource(R.drawable.cartevisite2);
-				break;
-			case 3:
-				ii.setImageResource(R.drawable.cartevisite3);
-				break;
-			case 4:
-				ii.setImageResource(R.drawable.cartevisite4);
-				break;
-			case 5:
-				ii.setImageResource(R.drawable.cartevisite2);
-				break;
-		}
+		changeTpl(nn);
 		
 		bRadio.setOnClickListener(new OnClickListener() {
 			
@@ -116,9 +101,10 @@ public class MyCardFragment extends Fragment {
 				String rrr;
 				try {
 					rrr = new HttpPostRequest(url2, postParameters2).execute().get();
-					System.out.println(rrr);
 					JSONObject obj2 = new JSONObject(rrr);
-					System.out.println(obj2);
+					session.setTpl(tpl);
+
+					changeTpl(tpl);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -133,5 +119,25 @@ public class MyCardFragment extends Fragment {
 		});
 		
 		return rootView;
+    }
+    
+    public void changeTpl(String nn) {
+    	switch ((Integer.parseInt(nn))) {
+		case 1:
+			ii.setImageResource(R.drawable.cartevisite1);
+			break;
+		case 2:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+		case 3:
+			ii.setImageResource(R.drawable.cartevisite3);
+			break;
+		case 4:
+			ii.setImageResource(R.drawable.cartevisite4);
+			break;
+		case 5:
+			ii.setImageResource(R.drawable.cartevisite2);
+			break;
+	}
     }
 }
