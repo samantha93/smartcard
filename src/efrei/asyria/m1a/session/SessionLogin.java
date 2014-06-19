@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import efrei.asyria.m1a.smartcard.HomeActivity;
 import efrei.asyria.m1a.smartcard.StartActivity;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -115,19 +115,19 @@ public class SessionLogin {
 		return pref.getString(KEY_ID, null);
 	}
 	
-	 public void isLog(){
+	 public void isLog(Activity activity){
         if(pref.getBoolean(IS_LOGIN, false)){
         	System.out.println("iS LOG");
             Intent i = new Intent(context, HomeActivity.class);
         	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
-            
+            activity.finish();
         }   
         System.out.println("NOT LOG");
     }
 	 
-	 public void logout() {
+	 public void logout(Activity activity) {
 		 editor.clear();
 		 editor.commit();
 		 System.out.println("Logout");
@@ -135,5 +135,6 @@ public class SessionLogin {
 		 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		 context.startActivity(i);
+		 activity.finish();
 	 }
 }

@@ -1,17 +1,16 @@
 package efrei.asyria.m1a.adapter;
 
-import java.net.URI;
 import java.util.List;
 
 import efrei.asyria.m1a.model.Card;
+import efrei.asyria.m1a.smartcard.HomeActivity;
 import efrei.asyria.m1a.smartcard.R;
+import efrei.asyria.m1a.utils.CardDialogFragment;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -20,19 +19,23 @@ import android.widget.TextView;
 public class ListCardAdapter extends BaseAdapter {
 
 	private Activity mContext;
+	private HomeActivity homeActivity;
+
 	private List<Card> mList;
 	private LayoutInflater mLayoutInflater = null;
 
-	public ListCardAdapter(Activity context, List<Card> list) {
+	public ListCardAdapter(Activity context, List<Card> list, HomeActivity homeActivity) {
 		mContext = context;
 		mList = list;
+		this.homeActivity = homeActivity;
 		mLayoutInflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 
 		View v = convertView;
+		
 		CompleteListViewHolder viewHolder;
 		if (convertView == null) {
 			LayoutInflater li = (LayoutInflater) mContext
@@ -42,7 +45,22 @@ public class ListCardAdapter extends BaseAdapter {
 			v.setTag(viewHolder);
 		} else {
 			viewHolder = (CompleteListViewHolder) v.getTag();
+			
 		}
+		
+		v.setOnLongClickListener(new OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				
+				CardDialogFragment dialog = new CardDialogFragment();
+				dialog.setId(Integer.toString(mList.get(position).getId()));
+				dialog.setHomeActivity(homeActivity);
+				dialog.show(mContext.getFragmentManager(), "");
+				
+				return false;
+			}
+		});
 		viewHolder.tvName.setText(mList.get(position).getUser().getName() + " "
 				+ mList.get(position).getUser().getSurname());
 		viewHolder.tvAdress.setText(mList.get(position).getUser().getAdress());

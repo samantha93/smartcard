@@ -38,7 +38,7 @@ public class SimulateurActivity extends Activity {
 		    public void sendTag() {
 		    	Intent i = new Intent(NfcAdapter.ACTION_NDEF_DISCOVERED);
 		    	NdefMessage[] messages = new NdefMessage[1];
-		    	messages[0] = NFCUtils.sendCard(null);
+		    	messages[0] = NFCUtils.sendCard("9");
 		    	i.putExtra(NfcAdapter.EXTRA_NDEF_MESSAGES, messages);
 		    	startActivity(i);
 		    }

@@ -98,7 +98,10 @@ public class ConnectionActivity extends Activity {
 								obj.getString("cAdress"), obj.getString("cCountry"), 
 								obj.getString("idTemplate"), obj.getString("idCard"));
 						Intent i = new Intent(ConnectionActivity.this, HomeActivity.class);
+						i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 						startActivity(i);
+						ConnectionActivity.this.finish();
 					} catch (Throwable t) {
 						tvError.setText(R.string.connectionError);
 						progressDialog.dismiss();

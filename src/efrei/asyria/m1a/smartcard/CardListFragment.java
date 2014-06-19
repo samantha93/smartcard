@@ -11,22 +11,17 @@ import org.json.JSONObject;
 
 import efrei.asyria.m1a.adapter.ListCardAdapter;
 import efrei.asyria.m1a.asynchronous.HttpGetRequest;
-import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.model.User;
 import efrei.asyria.m1a.session.SessionLogin;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,10 +29,14 @@ public class CardListFragment extends Fragment {
 
 	private SessionLogin session;
 	private ListView listViewCards;
+	private HomeActivity homeActivity;
 	
 	private TextView etE;
+	
+	public CardListFragment() {}
 
-	public CardListFragment() {
+	public void setHomeActivity(HomeActivity homeActivity) {
+		this.homeActivity = homeActivity;
 	}
 
 	@Override
@@ -52,7 +51,6 @@ public class CardListFragment extends Fragment {
 		progressDialog.setMessage("Chargement...");
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.show();
-		
 		
 		session = new SessionLogin(inflater.getContext());
 		System.out.println(Integer.parseInt(session.getId()));
@@ -104,29 +102,33 @@ public class CardListFragment extends Fragment {
 					}
 					
 					for (int i=0; i<listCards.size(); i++) {
-						String idd = listCards.get(i).getString("users_id");
-						String url2 = "http://dev.smart-card.fr/user?id="+idd;
+//						String idd = listCards.get(i).getString("users_id");
+						String idd = listCards.get(i).getString("cards_id");
+//						String url2 = "http://dev.smart-card.fr/user?id="+idd;
+						String url2 = "http://dev.smart-card.fr/card?id="+idd;
 						String r = new HttpGetRequest(url2).execute().get();
-						JSONObject userr = new JSONObject(r);
+//						JSONObject userr = new JSONObject(r);
+						JSONObject card = new JSONObject(r);
 	
 						User u = null;
-						if (userr.getString("success").equals("true")) {
-							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"),
-									userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"),
-									userr.getString("phone2"), userr.getString("email"), userr.getString("cName"), userr.getString("job"));
+						if (card.getString("success").equals("true")) {
+//							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"),
+//									userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"),
+//									userr.getString("phone2"), userr.getString("email"), userr.getString("cName"), userr.getString("job"));
+							u = new User(0, "surname", "name", card.getString("adress"), 78965, card.getString("city"), "01xxxxxxxx",
+									"06xxxxxxxx", "email", card.getString("name"), card.getString("job"));
 							System.out.println(u);
 						} else {
 							System.out.println("not good");
 							continue;
 						}
-						mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u, listCards.get(i).getString("cards_id")));
+						mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u, card.getString("idTemplate")));
 					}
 
 					//mList.add(new Card(1, u1, "cartevisite"));
 					//mList.add(new Card(2, u2, "cartevisite"));
-	
-					listViewCards = (ListView) rootView.findViewById(R.id.listCard); 
-					ListCardAdapter adapter = new ListCardAdapter(this.getActivity(), mList);
+					listViewCards = (ListView) rootView.findViewById(R.id.listCard);
+					ListCardAdapter adapter = new ListCardAdapter(this.getActivity(), mList, homeActivity);
 					listViewCards.setAdapter(adapter);
 				}
 				progressDialog.dismiss();

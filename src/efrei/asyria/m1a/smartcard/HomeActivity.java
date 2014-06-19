@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import efrei.asyria.m1a.adapter.NavDrawerListAdapter;
+import efrei.asyria.m1a.asynchronous.HttpGetRequest;
 import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.menu.NavDrawerItem;
 import efrei.asyria.m1a.session.SessionLogin;
@@ -28,6 +29,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -185,6 +187,7 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
         switch (position) {
 	        case 0:
 	            fragment = new CardListFragment();
+	            ((CardListFragment) fragment).setHomeActivity(this);
 	            break;
 	        case 1:
 	            fragment = new MyCardFragment();
@@ -202,7 +205,7 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 	        	ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
 	    		progressDialog.setMessage("Deconnexion...");
 	        	String url = "http://dev.smart-card.fr/logout";
-	        	sessionLogin.logout();
+	        	sessionLogin.logout(this);
 				/*try {
 					String result = new HttpGetRequest(null, null).execute(url).get();
 					sessionLogin.logout();
@@ -276,6 +279,26 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
         	addCardToUser(getIntent());
         }
     }
+
+	public void deleteCardToUser(String id) {
+
+		String url = "http://dev.smart-card.fr/suppressionUserCards?id=" + id;
+		try {
+			String r = new HttpGetRequest(url).execute().get();
+			JSONObject obj = new JSONObject(r);
+			
+			if (obj.getString("success").equals("true"))
+			{
+				displayView(0);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
     
 	public void addCardToUser(Intent intent)
 	{
@@ -303,7 +326,7 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 			String success = obj.getString("success");
 			if (success.equals("true"))
 			{
-				Toast.makeText(this, "ajout de carte succes !", Toast.LENGTH_LONG).show();
+				displayView(0);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -314,4 +337,25 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 		}
 		progressDialog.dismiss();
     }
+	
+	private boolean doubleBackToExitPressedOnce = false;
+	
+	@Override
+	public void onBackPressed() {
+	    if (doubleBackToExitPressedOnce) {
+	        super.onBackPressed();
+	        return;
+	    }
+
+	    this.doubleBackToExitPressedOnce = true;
+	    Toast.makeText(this, "Rappuyez sur la touche Retour pour quitter.", Toast.LENGTH_SHORT).show();
+
+	    new Handler().postDelayed(new Runnable() {
+
+	        @Override
+	        public void run() {
+	            doubleBackToExitPressedOnce=false;                       
+	        }
+	    }, 2000);
+	} 
 }
