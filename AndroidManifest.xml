@@ -43,8 +43,6 @@
                 <data android:mimeType="application/vnd.efrei.asyria.m1a.smartcard.beam"/>
             </intent-filter>
         </activity>
-        
-        <activity android:name="efrei.asyria.m1a.smartcard.SimulateurActivity" ></activity>
     </application>
 
 </manifest>

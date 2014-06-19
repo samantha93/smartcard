@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,6 +15,7 @@ import efrei.asyria.m1a.adapter.NavDrawerListAdapter;
 import efrei.asyria.m1a.asynchronous.HttpGetRequest;
 import efrei.asyria.m1a.asynchronous.HttpPostRequest;
 import efrei.asyria.m1a.menu.NavDrawerItem;
+import efrei.asyria.m1a.model.Card;
 import efrei.asyria.m1a.session.SessionLogin;
 import efrei.asyria.m1a.utils.NFCUtils;
 import android.app.Activity;
@@ -71,11 +73,12 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 		if (nfcAdapter == null)
 		{
 			Toast.makeText(this, R.string.nfcUnavailable, Toast.LENGTH_LONG).show();
-			finish();
-			return;
+		}
+		else
+		{
+	        nfcAdapter.setNdefPushMessageCallback(this, this);
 		}
 
-        nfcAdapter.setNdefPushMessageCallback(this, this);
  
         sessionLogin = new SessionLogin(getApplicationContext());        
         
@@ -94,7 +97,6 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
  
         navMenuIcons.recycle();
  
@@ -217,10 +219,6 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 					e.printStackTrace();
 				}*/
 	            break;
-	        case 6:
-	        	Intent i = new Intent(HomeActivity.this, SimulateurActivity.class);
-	        	startActivity(i);
-	        	break;
 	        default:
 	            break;
         }
@@ -310,23 +308,26 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
         NdefRecord[] records = msg.getRecords();
         String idCard = new String(records[0].getPayload());
 
-		String url = "http://dev.smart-card.fr/ajoutUserCards";
-		List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-		postParameters.add(new BasicNameValuePair("userId", user.get(SessionLogin.KEY_ID)));
-		postParameters.add(new BasicNameValuePair("cardId", idCard));
-		ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
-		progressDialog.setIndeterminate(false);
-		progressDialog.setMessage("Ajout de la carte...");
-		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		progressDialog.show();
-		String result;
+		String url = "http://dev.smart-card.fr/userCards?userId=" + user.get(SessionLogin.KEY_ID);
+		boolean cardDejaPossede = false;
 		try {
-			result = new HttpPostRequest(url, postParameters).execute().get();
-			JSONObject obj = new JSONObject(result);
-			String success = obj.getString("success");
-			if (success.equals("true"))
-			{
-				displayView(0);
+			String r = new HttpGetRequest(url).execute().get();
+
+			JSONArray objList = new JSONArray(r);
+			List<JSONObject> listCards = new ArrayList<JSONObject>();
+			List<Card> mList = new ArrayList<Card>();
+			if (objList.length() > 0) {
+				for (int i=0; i<objList.length(); i++) {
+					listCards.add(objList.getJSONObject(i));
+				}
+				
+				for (int i = 0; i < listCards.size(); i++) {
+					if (listCards.get(i).get("cards_id").equals(idCard))
+					{
+						cardDejaPossede = true;
+						break;
+					}
+				}
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -335,7 +336,40 @@ public class HomeActivity extends Activity implements CreateNdefMessageCallback 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		progressDialog.dismiss();
+
+		if (!cardDejaPossede)
+		{
+			String url2 = "http://dev.smart-card.fr/ajoutUserCards";
+			List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
+			postParameters.add(new BasicNameValuePair("userId", user.get(SessionLogin.KEY_ID)));
+			postParameters.add(new BasicNameValuePair("cardId", idCard));
+			ProgressDialog progressDialog = new ProgressDialog(HomeActivity.this);
+			progressDialog.setIndeterminate(false);
+			progressDialog.setMessage("Ajout de la carte...");
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			progressDialog.show();
+			String result;
+			try {
+				result = new HttpPostRequest(url2, postParameters).execute().get();
+				JSONObject obj = new JSONObject(result);
+				String success = obj.getString("success");
+				if (success.equals("true"))
+				{
+					displayView(0);
+				}
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			progressDialog.dismiss();
+		}
+		else
+		{
+			Toast.makeText(this, "Vous possédez déjà cette carte", Toast.LENGTH_LONG).show();
+		}
     }
 	
 	private boolean doubleBackToExitPressedOnce = false;

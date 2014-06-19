@@ -102,19 +102,13 @@ public class CardListFragment extends Fragment {
 					}
 					
 					for (int i=0; i<listCards.size(); i++) {
-//						String idd = listCards.get(i).getString("users_id");
 						String idd = listCards.get(i).getString("cards_id");
-//						String url2 = "http://dev.smart-card.fr/user?id="+idd;
 						String url2 = "http://dev.smart-card.fr/card?id="+idd;
 						String r = new HttpGetRequest(url2).execute().get();
-//						JSONObject userr = new JSONObject(r);
 						JSONObject card = new JSONObject(r);
 	
 						User u = null;
 						if (card.getString("success").equals("true")) {
-//							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"),
-//									userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"),
-//									userr.getString("phone2"), userr.getString("email"), userr.getString("cName"), userr.getString("job"));
 							u = new User(Integer.parseInt(card.getString("idUser")), card.getString("surname"), card.getString("name"), card.getString("adress"), 78965, card.getString("city"), card.getString("phone1"),
 									card.getString("phone2"), card.getString("email"), card.getString("nameC"), card.getString("job"));
 							System.out.println(u);
@@ -125,8 +119,6 @@ public class CardListFragment extends Fragment {
 						mList.add(new Card(Integer.parseInt(listCards.get(i).getString("id")), u, card.getString("idTemplate")));
 					}
 
-					//mList.add(new Card(1, u1, "cartevisite"));
-					//mList.add(new Card(2, u2, "cartevisite"));
 					listViewCards = (ListView) rootView.findViewById(R.id.listCard);
 					ListCardAdapter adapter = new ListCardAdapter(this.getActivity(), mList, homeActivity);
 					listViewCards.setAdapter(adapter);
