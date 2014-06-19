@@ -115,8 +115,8 @@ public class CardListFragment extends Fragment {
 //							u = new User(Integer.parseInt(userr.getString("idUser")), userr.getString("surname"), userr.getString("name"),
 //									userr.getString("cAdress"), 78965, userr.getString("cCity"), userr.getString("phone1"),
 //									userr.getString("phone2"), userr.getString("email"), userr.getString("cName"), userr.getString("job"));
-							u = new User(0, "surname", "name", card.getString("adress"), 78965, card.getString("city"), "01xxxxxxxx",
-									"06xxxxxxxx", "email", card.getString("name"), card.getString("job"));
+							u = new User(Integer.parseInt(card.getString("idUser")), card.getString("surname"), card.getString("name"), card.getString("adress"), 78965, card.getString("city"), card.getString("phone1"),
+									card.getString("phone2"), card.getString("email"), card.getString("nameC"), card.getString("job"));
 							System.out.println(u);
 						} else {
 							System.out.println("not good");

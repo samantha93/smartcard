@@ -137,7 +137,7 @@ public class MyCardFragment extends Fragment {
 			ii.setImageResource(R.drawable.cartevisite4);
 			break;
 		case 5:
-			ii.setImageResource(R.drawable.cartevisite2);
+			ii.setImageResource(R.drawable.cartevisite5);
 			break;
 		}
     }
